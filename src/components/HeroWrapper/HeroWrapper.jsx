@@ -3,7 +3,9 @@ import background from '../../assets/images/hero-bg.jpg'
 import background2 from '../../assets/images/hero--bg2.jpg'
 import background3 from '../../assets/images/hero--bg3.jpg'
 import './hero-wrapper.css'
+import { options } from '../../utils/data'
 const HeroWrapper = () => {
+
     return (
         <>
             {/* START HERO-WRAPPER AREA */}
@@ -12,8 +14,8 @@ const HeroWrapper = () => {
                     <div id="fullscreen-slide-contain">
                         <ul class="slides-container">
                             <li><img src={background} alt="" /></li>
-                            {/* <li><img src={background2} alt="" /></li>
-                            <li><img src={background3} alt="" /></li> */}
+                            <li><img src={background2} alt="" /></li>
+                            <li><img src={background3} alt="" /></li>
                         </ul>
                     </div>
                     {/* End background slider */}
@@ -119,14 +121,14 @@ const HeroWrapper = () => {
                                                                     class="adult"
                                                                     data-text="Adult"
                                                                     data-text-multi="Adults"
-                                                                >0 Adult</span
+                                                                >{options.adults} Adults</span
                                                                 >
                                                                 -
                                                                 <span
                                                                     class="children"
                                                                     data-text="Child"
                                                                     data-text-multi="Children"
-                                                                >0 Child</span
+                                                                >{options.children} Child</span
                                                                 >
                                                             </a>
                                                             <div class="dropdown-menu dropdown-menu-wrap">
@@ -136,13 +138,13 @@ const HeroWrapper = () => {
                                                                     >
                                                                         <label>Rooms</label>
                                                                         <div class="qtyBtn d-flex align-items-center">
-                                                                            <div class="qtyDec">
+                                                                            <div className={options.rooms < 1 ? "qtyDec not-allowed" : "qtyDec"}>
                                                                                 <i class="la la-minus"></i>
                                                                             </div>
                                                                             <input
                                                                                 type="text"
                                                                                 name="room_number"
-                                                                                value="0"
+                                                                                value={options.rooms}
                                                                                 class="qty-input"
                                                                             />
                                                                             <div class="qtyInc">
@@ -163,7 +165,7 @@ const HeroWrapper = () => {
                                                                             <input
                                                                                 type="text"
                                                                                 name="adult_number"
-                                                                                value="0"
+                                                                                value={options.adults}
                                                                             />
                                                                             <div class="qtyInc">
                                                                                 <i class="la la-plus"></i>
@@ -183,7 +185,7 @@ const HeroWrapper = () => {
                                                                             <input
                                                                                 type="text"
                                                                                 name="child_number"
-                                                                                value="0"
+                                                                                value={options.children}
                                                                             />
                                                                             <div class="qtyInc">
                                                                                 <i class="la la-plus"></i>

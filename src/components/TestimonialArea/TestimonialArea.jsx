@@ -1,4 +1,6 @@
 import React from 'react'
+import customerImg1 from '../../assets/images/team8.jpg'
+import customerImg2 from '../../assets/images/team9.jpg'
 
 const TestimonialArea = () => {
     return (
@@ -28,7 +30,7 @@ const TestimonialArea = () => {
                                     </div>
                                     <div class="author-content d-flex align-items-center">
                                         <div class="author-img">
-                                            <img src="images/team8.jpg" alt="testimonial image" />
+                                            <img src={customerImg1} alt="testimonial image" />
                                         </div>
                                         <div class="author-bio">
                                             <h4 class="author__title">Leroy Bell</h4>
@@ -53,7 +55,7 @@ const TestimonialArea = () => {
                                     </div>
                                     <div class="author-content d-flex align-items-center">
                                         <div class="author-img">
-                                            <img src="images/team9.jpg" alt="testimonial image" />
+                                            <img src={customerImg2} alt="testimonial image" />
                                         </div>
                                         <div class="author-bio">
                                             <h4 class="author__title">Richard Pam</h4>

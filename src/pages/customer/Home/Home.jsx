@@ -4,10 +4,17 @@ import Header from '../../../components/Header/Header'
 import HeroWrapper from '../../../components/HeroWrapper/HeroWrapper'
 import InfoArea from '../../../components/InfoArea/InfoArea'
 import Popular from '../../../components/Popular/Popular'
-import DiscountArea from '../../../components/DiscountArea/DiscountArea'
 import TestimonialArea from '../../../components/TestimonialArea/TestimonialArea'
 import CtaArea from '../../../components/CTAArea/CtaArea'
 import Footer from '../../../components/Footer/Footer'
+
+import img5 from '../../../assets/images/img5.jpg'
+import img6 from '../../../assets/images/img6.jpg'
+import img7 from '../../../assets/images/img7.jpg'
+import smallTeam1 from '../../../assets/images/small-team1.jpg'
+import smallTeam2 from '../../../assets/images/small-team2.jpg'
+import smallTeam3 from '../../../assets/images/small-team3.jpg'
+
 
 const Home = () => {
     return (
@@ -34,7 +41,7 @@ const Home = () => {
                         <div class="col-lg-4 responsive-column">
                             <div class="card-item blog-card">
                                 <div class="card-img">
-                                    <img src="images/img5.jpg" alt="blog-img" />
+                                    <img src={img5} alt="blog-img" />
                                     <div class="post-format icon-element">
                                         <i class="la la-photo"></i>
                                     </div>
@@ -60,7 +67,7 @@ const Home = () => {
                                 >
                                     <div class="author-content d-flex align-items-center">
                                         <div class="author-img">
-                                            <img src="images/small-team1.jpg" alt="testimonial image" />
+                                            <img src={smallTeam1} alt="testimonial image" />
                                         </div>
                                         <div class="author-bio">
                                             <a href="#" class="author__title">Leroy Bell</a>
@@ -90,7 +97,7 @@ const Home = () => {
                         <div class="col-lg-4 responsive-column">
                             <div class="card-item blog-card">
                                 <div class="card-img">
-                                    <img src="images/img6.jpg" alt="blog-img" />
+                                    <img src={img6} alt="blog-img" />
                                     <div class="post-format icon-element">
                                         <i class="la la-play"></i>
                                     </div>
@@ -115,7 +122,7 @@ const Home = () => {
                                 >
                                     <div class="author-content d-flex align-items-center">
                                         <div class="author-img">
-                                            <img src="images/small-team2.jpg" alt="testimonial image" />
+                                            <img src={smallTeam2} alt="testimonial image" />
                                         </div>
                                         <div class="author-bio">
                                             <a href="#" class="author__title">Phillip Hunt</a>
@@ -145,7 +152,7 @@ const Home = () => {
                         <div class="col-lg-4 responsive-column">
                             <div class="card-item blog-card">
                                 <div class="card-img">
-                                    <img src="images/img7.jpg" alt="blog-img" />
+                                    <img src={img7} alt="blog-img" />
                                     <div class="post-format icon-element">
                                         <i class="la la-music"></i>
                                     </div>
@@ -170,7 +177,7 @@ const Home = () => {
                                 >
                                     <div class="author-content d-flex align-items-center">
                                         <div class="author-img">
-                                            <img src="images/small-team3.jpg" alt="testimonial image" />
+                                            <img src={smallTeam3} alt="testimonial image" />
                                         </div>
                                         <div class="author-bio">
                                             <a href="#" class="author__title">Luke Jacobs</a>
@@ -203,6 +210,8 @@ const Home = () => {
 
             <CtaArea />
             <Footer />
+
+
         </div>
     )
 }

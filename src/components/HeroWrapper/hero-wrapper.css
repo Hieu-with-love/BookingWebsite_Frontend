@@ -5,3 +5,6 @@
     object-fit: cover;
 }
 
+.qty-box .qtyBtn .not-allowed:hover {
+    cursor: not-allowed !important;
+}
