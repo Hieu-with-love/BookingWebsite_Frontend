@@ -14,6 +14,8 @@ import img7 from '../../../assets/images/img7.jpg'
 import smallTeam1 from '../../../assets/images/small-team1.jpg'
 import smallTeam2 from '../../../assets/images/small-team2.jpg'
 import smallTeam3 from '../../../assets/images/small-team3.jpg'
+import SignupPage from '../../auth/SignupPage'
+import LoginPage from '../../auth/LoginPage'
 
 
 const Home = () => {
@@ -210,6 +212,14 @@ const Home = () => {
 
             <CtaArea />
             <Footer />
+
+            <div id="back-to-top">
+                <i class="la la-angle-up" title="Go top"></i>
+            </div>
+
+            <SignupPage />
+
+            <LoginPage />
 
 
         </div>
