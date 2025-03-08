@@ -1,4 +1,6 @@
 import React from 'react'
+import logo from '../../assets/images/logo.png'
+import paymentImg from '../../assets/images/payment-img.png'
 
 const Footer = () => {
     return (
@@ -44,7 +46,7 @@ const Footer = () => {
                             <div class="footer-item">
                                 <div class="footer-logo padding-bottom-30px">
                                     <a href="index.html" class="foot__logo"
-                                    ><img src="images/logo.png" alt="logo"
+                                    ><img src={logo} alt="logo"
                                         /></a>
                                 </div>
                                 <p class="footer__desc">
@@ -105,7 +107,7 @@ const Footer = () => {
                                 <p class="footer__desc pb-3">
                                     Pay any way you choose, we support all payment options.
                                 </p>
-                                <img src="images/payment-img.png" alt="" />
+                                <img src={paymentImg} alt="" />
                             </div>
                         </div>
                     </div>

@@ -9,8 +9,10 @@ function App() {
       {/* We can automatically navigate from / default to /customer */}
       <Route path='/' element={<Navigate to='/customer' replace />} />
 
+      {/* Start all routes of Customer Role */}
       <Route path='/customer' element={<Home />} />
 
+      {/* End all routes of Customer Role */}
 
     </Routes>
   )
