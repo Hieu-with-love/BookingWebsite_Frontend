@@ -4,6 +4,7 @@ import { Navigate, Route, Router, Routes } from 'react-router-dom'
 import Home from './pages/customer/Home/Home'
 import LoginPage from './pages/auth/LoginPage'
 import SignupPage from './pages/auth/SignupPage'
+import RecoverPassword from './pages/customer/RecoverPassword/RecoverPassword'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       {/* Start auth routes */}
       <Route path='/signin' element={<LoginPage />} />
       <Route path='/signup' element={<SignupPage />} />
+      <Route path='/recover-password' element={<RecoverPassword />} />
       {/* End auth routes */}
 
       {/* Start all routes of Customer Role */}
