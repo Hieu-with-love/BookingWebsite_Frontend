@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from '../../../components/Navbar/Navbar'
 import Header from '../../../components/Header/Header'
 import HeroWrapper from '../../../components/HeroWrapper/HeroWrapper'
@@ -16,11 +16,33 @@ import smallTeam2 from '../../../assets/images/small-team2.jpg'
 import smallTeam3 from '../../../assets/images/small-team3.jpg'
 import SignupPage from '../../auth/SignupPage'
 import LoginPage from '../../auth/LoginPage'
+import LoadingPage from '../../../common/LoadingPage'
 
 
 const Home = () => {
+
+    useEffect(() => {
+        $(window).on("load", function () {
+            $("#my-preloader").fadeOut(1000);
+        });
+    }, []);
+
     return (
-        <div>
+        <>
+            <div className="preloader" id="my-preloader">
+                <div className="loader">
+                    <svg className="spinner" viewBox="0 0 50 50">
+                        <circle
+                            className="path"
+                            cx="25"
+                            cy="25"
+                            r="20"
+                            fill="none"
+                            stroke-width="5"
+                        ></circle>
+                    </svg>
+                </div>
+            </div>
             <Header />
             <Navbar />
             <HeroWrapper />
@@ -222,7 +244,7 @@ const Home = () => {
             <LoginPage />
 
 
-        </div>
+        </>
     )
 }
 

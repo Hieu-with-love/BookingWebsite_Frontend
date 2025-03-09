@@ -1,6 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { login } from '../../config/apiConfig';
+import { Link, useNavigate } from 'react-router-dom';
+import RecoverPassword from '../customer/RecoverPassword/RecoverPassword';
 
 const LoginPage = () => {
+
+    const [formData, setFormData] = useState({
+        email: '',
+        password: ''
+    });
+
+    const handleChangeForm = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+        console.log("formData: ", formData);
+    }
+    const handleSubmitForm = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await login(formData);
+            console.log("response: ", response);
+        } catch (error) {
+            console.log("error: ", error);
+        }
+    }
+
+    const navigate = useNavigate();
+
     return (
         <div class="modal-popup">
             <div
@@ -32,14 +60,15 @@ const LoginPage = () => {
                             <div class="contact-form-action">
                                 <form method="post">
                                     <div class="input-box">
-                                        <label class="label-text">Username</label>
+                                        <label class="label-text">Email</label>
                                         <div class="form-group">
                                             <span class="la la-user form-icon"></span>
                                             <input
                                                 class="form-control"
-                                                type="text"
-                                                name="text"
+                                                type="email"
+                                                name="email"
                                                 placeholder="Type your username"
+                                                onChange={handleChangeForm}
                                             />
                                         </div>
                                     </div>
@@ -49,9 +78,10 @@ const LoginPage = () => {
                                             <span class="la la-lock form-icon"></span>
                                             <input
                                                 class="form-control"
-                                                type="text"
-                                                name="text"
+                                                type="password"
+                                                name="password"
                                                 placeholder="Type your password"
+                                                onChange={handleChangeForm}
                                             />
                                         </div>
                                         <div
@@ -66,12 +96,14 @@ const LoginPage = () => {
                                                 <label for="rememberchb">Remember me</label>
                                             </div>
                                             <p class="forgot-password">
-                                                <a href="recover.html">Forgot Password?</a>
+                                                <Link to="/recover-password">Forgot Password?</Link>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="btn-box pt-3 pb-4">
-                                        <button type="button" class="theme-btn w-100">
+                                        <button type="button" class="theme-btn w-100"
+                                            onClick={handleSubmitForm}
+                                        >
                                             Login Account
                                         </button>
                                     </div>

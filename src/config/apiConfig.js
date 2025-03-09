@@ -16,5 +16,13 @@ export const register = async (userData) => {
     } catch (error) {
         return error.response ? error.response.data : error.message;
     }
+}
 
+export const login = async (userData) => {
+    try {
+        const response = await api.post("/auth/login", userData);
+        return response.data;
+    } catch (error) {
+        return error.response ? error.response.data : error.message;
+    }
 }
