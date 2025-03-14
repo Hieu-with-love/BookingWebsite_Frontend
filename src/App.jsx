@@ -10,6 +10,7 @@ import RoomsList from './pages/customer/RoomsList/RoomsList'
 import AdminDashboardBooking from './pages/admin/AdminDashboardBooking'
 import AdminOrder from './pages/admin/AdminOrder'
 import AdminOrderDetail from './pages/admin/AdminOrderDetail'
+import AdminReviews from './pages/admin/AdminReviews'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <Route path='/admin/booking' element={<AdminDashboardBooking />} />
       <Route path='/admin/orders' element={<AdminOrder />} />
       <Route path='/admin/orders/:id' element={<AdminOrderDetail />} />
+      <Route path='/admin/reviews' element={<AdminReviews />} />
 
     </Routes>
   )
