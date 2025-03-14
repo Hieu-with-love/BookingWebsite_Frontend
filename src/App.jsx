@@ -6,6 +6,7 @@ import LoginPage from './pages/auth/LoginPage'
 import SignupPage from './pages/auth/SignupPage'
 import RecoverPassword from './pages/customer/RecoverPassword/RecoverPassword'
 import AdminDashboard from './pages/admin/AdminDashboard'
+import AdminDashboardBooking from './pages/admin/AdminDashboardBooking'
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
       {/* End all routes of Customer Role */}
 
       <Route path='/admin' element={<AdminDashboard />} />
+      <Route path='/admin/booking' element={<AdminDashboardBooking />} />
 
     </Routes>
   )
