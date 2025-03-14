@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Navbar from '../../../components/Navbar/Navbar'
 import Header from '../../../components/Header/Header'
 import HeroWrapper from '../../../components/HeroWrapper/HeroWrapper'
 import InfoArea from '../../../components/InfoArea/InfoArea'
@@ -16,7 +15,6 @@ import smallTeam2 from '../../../assets/images/small-team2.jpg'
 import smallTeam3 from '../../../assets/images/small-team3.jpg'
 import SignupPage from '../../auth/SignupPage'
 import LoginPage from '../../auth/LoginPage'
-import LoadingPage from '../../../common/LoadingPage'
 
 
 const Home = () => {
@@ -44,10 +42,11 @@ const Home = () => {
                 </div>
             </div>
             <Header />
-            <Navbar />
             <HeroWrapper />
             <InfoArea />
             <Popular />
+
+            <h1>Load all hotels/rooms at here</h1>
 
             <TestimonialArea />
             <div class="section-block"></div>

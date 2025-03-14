@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { login } from '../../config/apiConfig';
 import { Link, useNavigate } from 'react-router-dom';
-import RecoverPassword from '../customer/RecoverPassword/RecoverPassword';
 
 const LoginPage = () => {
 
@@ -9,6 +8,9 @@ const LoginPage = () => {
         email: '',
         password: ''
     });
+    const [isLogin, setIsLogin] = useState(false);
+    const navigate = useNavigate();
+
 
     const handleChangeForm = (e) => {
         setFormData({
@@ -21,13 +23,15 @@ const LoginPage = () => {
         e.preventDefault();
         try {
             const response = await login(formData);
+            localStorage.setItem('jwt', response.data.jwt);
+            setIsLogin(true);
+
             console.log("response: ", response);
         } catch (error) {
             console.log("error: ", error);
         }
     }
 
-    const navigate = useNavigate();
 
     return (
         <div class="modal-popup">

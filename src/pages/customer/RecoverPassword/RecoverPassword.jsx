@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import LoadingPage from '../../../common/LoadingPage'
 import Header from '../../../components/Header/Header'
-import Navbar from '../../../components/Navbar/Navbar'
 import Footer from '../../../components/Footer/Footer'
 
 const RecoverPassword = () => {
@@ -14,7 +13,6 @@ const RecoverPassword = () => {
         <>
             <LoadingPage />
             <Header />
-            <Navbar />
 
             <section class="breadcrumb-area bread-bg-9">
                 <div class="breadcrumb-wrap">
