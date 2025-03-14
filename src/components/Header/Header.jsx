@@ -211,7 +211,7 @@ const Header = () => {
                                         <nav>
                                             <ul>
                                                 <li>
-                                                    <li><Link to="/customer">Home</Link></li>
+                                                    <li><Link to="/home">Home</Link></li>
                                                 </li>
                                                 <li>
                                                     <a href="#">Tour <i class="la la-angle-down"></i></a>
@@ -398,9 +398,9 @@ const Header = () => {
                                                     <a href="#">Hotel <i class="la la-angle-down"></i></a>
                                                     <ul class="dropdown-menu-item">
                                                         <li><a href="hotel-grid.html">Hotel grid</a></li>
-                                                        <li><a href="hotel-list.html">Hotel list</a></li>
+                                                        <li><Link to="/hotels">Hotels List</Link></li>
                                                         <li>
-                                                            <a href="hotel-sidebar.html">Hotel sidebar </a>
+                                                            <Link to="/rooms">Rooms Lists </Link>
                                                         </li>
                                                         <li><a href="hotel-single.html">Hotel details</a></li>
                                                         <li>
