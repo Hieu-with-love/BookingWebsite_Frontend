@@ -13,6 +13,7 @@ import AdminOrderDetail from './pages/admin/AdminOrderDetail'
 import AdminReviews from './pages/admin/AdminReviews'
 import AdminSetting from './pages/admin/AdminSetting'
 import AdminPayment from './pages/admin/AdminPayment'
+import AdminWishList from './pages/admin/AdminWishList'
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
       <Route path='/admin/reviews' element={<AdminReviews />} />
       <Route path='/admin/setting' element={<AdminSetting />} />
       <Route path='/admin/payments' element={<AdminPayment />} />
+      <Route path='/admin/wishlist' element={<AdminWishList />} />
 
     </Routes>
   )
