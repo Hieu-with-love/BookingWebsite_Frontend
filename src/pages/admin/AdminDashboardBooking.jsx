@@ -1,4 +1,10 @@
 import React from 'react'
+import imgTeam8 from '../../assets/images/team8.jpg'
+import imgTeam9 from '../../assets/images/team9.jpg'
+import imgTeam10 from '../../assets/images/team10.jpg'
+import imgTeam11 from '../../assets/images/team11.jpg'
+import logo2 from '../../assets/images/logo2.png'
+import Sidebar_Admin from '../../components/Sidebar/Sidebar_Admin'
 
 const AdminDashboardBooking = () => {
     return (
@@ -327,130 +333,7 @@ const AdminDashboardBooking = () => {
                 </div>
             </div>
 
-            <div class="sidebar-nav sidebar--nav">
-                <div class="sidebar-nav-body">
-                    <div class="side-menu-close">
-                        <i class="la la-times"></i>
-                    </div>
-                    {/* {/* end menu-toggler */}
-                    <div class="author-content">
-                        <div class="d-flex align-items-center">
-                            <div class="author-img avatar-sm">
-                                <img src="images/team9.jpg" alt="testimonial image" />
-                            </div>
-                            <div class="author-bio">
-                                <h4 class="author__title">Royel travel agency</h4>
-                                <span class="author__meta">Welcome to Admin Panel</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="sidebar-menu-wrap">
-                        <ul class="sidebar-menu toggle-menu list-items">
-                            <li>
-                                <a href="admin-dashboard.html"
-                                ><i class="la la-dashboard me-2 text-color"></i>Dashboard</a
-                                >
-                            </li>
-                            <li class="page-active">
-                                <a href="admin-dashboard-booking.html"
-                                ><i class="la la-shopping-cart me-2"></i>Booking</a
-                                >
-                            </li>
-                            <li>
-                                <span class="side-menu-icon toggle-menu-icon">
-                                    <i class="la la-angle-down"></i>
-                                </span>
-                                <a href="admin-dashboard-orders.html"
-                                ><i class="la la-list me-2 text-color-2"></i>Orders</a
-                                >
-                                <ul class="toggle-drop-menu">
-                                    <li>
-                                        <a href="admin-dashboard-orders-details.html"
-                                        >Order Details</a
-                                        >
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <span class="side-menu-icon toggle-menu-icon">
-                                    <i class="la la-angle-down"></i>
-                                </span>
-                                <a href="admin-dashboard-travellers.html"
-                                ><i class="la la-users me-2 text-color-3"></i>Travellers</a
-                                >
-                                <ul class="toggle-drop-menu">
-                                    <li>
-                                        <a href="admin-dashboard-traveler-detail.html"
-                                        >Traveller Details</a
-                                        >
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="admin-dashboard-visa.html"
-                                ><i class="la la-plane me-2 text-color-4"></i>Visa
-                                    Application</a
-                                >
-                            </li>
-                            <li>
-                                <a href="admin-dashboard-reviews.html"
-                                ><i class="la la-star me-2 text-color-5"></i>Reviews</a
-                                >
-                            </li>
-                            <li>
-                                <a href="admin-dashboard-wishlist.html"
-                                ><i class="la la-heart me-2 text-color-6"></i>Wishlist</a
-                                >
-                            </li>
-                            <li>
-                                <a href="admin-dashboard-travel-agents.html"
-                                ><i class="la la-text-width me-2 text-color-7"></i>Travel
-                                    Agents</a
-                                >
-                            </li>
-                            <li>
-                                <span class="side-menu-icon toggle-menu-icon">
-                                    <i class="la la-angle-down"></i>
-                                </span>
-                                <a href="#"
-                                ><i class="la la-area-chart me-2 text-color-8"></i>Finance</a
-                                >
-                                <ul class="toggle-drop-menu">
-                                    <li><a href="admin-invoice.html">Invoice</a></li>
-                                    <li><a href="admin-payments.html">Payments</a></li>
-                                    <li><a href="admin-currency-list.html">Currency List</a></li>
-                                    <li>
-                                        <a href="admin-dashboard-subscribers.html">Subscribers</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <span class="side-menu-icon toggle-menu-icon">
-                                    <i class="la la-angle-down"></i>
-                                </span>
-                                <a href="#"
-                                ><i class="la la-map-signs me-2 text-color-9"></i>Locations</a
-                                >
-                                <ul class="toggle-drop-menu">
-                                    <li><a href="admin-countries.html">Countries</a></li>
-                                    <li><a href="admin-airlines.html">Airlines</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="admin-dashboard-settings.html"
-                                ><i class="la la-cog me-2 text-color-10"></i>Settings</a
-                                >
-                            </li>
-                            <li>
-                                <a href="index.html"
-                                ><i class="la la-power-off me-2 text-color-11"></i>Logout</a
-                                >
-                            </li>
-                        </ul>
-                    </div>
-                    {/* {/* end sidebar-menu-wrap */}
-                </div>
-            </div>
+            <Sidebar_Admin />
 
             <section class="dashboard-area">
                 <div class="dashboard-nav dashboard--nav">
@@ -460,7 +343,7 @@ const AdminDashboardBooking = () => {
                                 <div class="menu-wrapper">
                                     <div class="logo me-5">
                                         <a href="index.html"
-                                        ><img src="images/logo2.png" alt="logo"
+                                        ><img src={logo2} alt="logo"
                                             /></a>
                                         <div class="menu-toggler">
                                             <i class="la la-bars"></i>
@@ -631,7 +514,7 @@ const AdminDashboardBooking = () => {
                                                             >
                                                                 <div class="msg-body d-flex align-items-center">
                                                                     <div class="avatar flex-shrink-0 me-3">
-                                                                        <img src="images/team8.jpg" alt="" />
+                                                                        <img src={imgTeam8} alt="" />
                                                                     </div>
                                                                     <div class="msg-content w-100">
                                                                         <div
@@ -653,7 +536,7 @@ const AdminDashboardBooking = () => {
                                                             >
                                                                 <div class="msg-body d-flex align-items-center">
                                                                     <div class="avatar flex-shrink-0 me-3">
-                                                                        <img src="images/team9.jpg" alt="" />
+                                                                        <img src={imgTeam9} alt="" />
                                                                     </div>
                                                                     <div class="msg-content w-100">
                                                                         <div
@@ -675,7 +558,7 @@ const AdminDashboardBooking = () => {
                                                             >
                                                                 <div class="msg-body d-flex align-items-center">
                                                                     <div class="avatar flex-shrink-0 me-3">
-                                                                        <img src="images/team10.jpg" alt="" />
+                                                                        <img src={imgTeam10} alt="" />
                                                                     </div>
                                                                     <div class="msg-content w-100">
                                                                         <div
@@ -697,7 +580,7 @@ const AdminDashboardBooking = () => {
                                                             >
                                                                 <div class="msg-body d-flex align-items-center">
                                                                     <div class="avatar flex-shrink-0 me-3">
-                                                                        <img src="images/team11.jpg" alt="" />
+                                                                        <img src={imgTeam11} alt="" />
                                                                     </div>
                                                                     <div class="msg-content w-100">
                                                                         <div
@@ -736,7 +619,7 @@ const AdminDashboardBooking = () => {
                                                     >
                                                         <div class="d-flex align-items-center">
                                                             <div class="avatar avatar-sm flex-shrink-0 me-2">
-                                                                <img src="images/team8.jpg" alt="team-img" />
+                                                                <img src={imgTeam8} alt="team-img" />
                                                             </div>
                                                             <span class="font-size-14 font-weight-bold"
                                                             >Royel Admin</span
@@ -868,7 +751,7 @@ const AdminDashboardBooking = () => {
                             {/* {/* end row */}
                         </div>
                     </div>
-                    {/* {/* end dashboard-bread */} 
+                    {/* {/* end dashboard-bread */}
                     <div class="dashboard-main-content">
                         <div class="container-fluid">
                             <div class="row">
