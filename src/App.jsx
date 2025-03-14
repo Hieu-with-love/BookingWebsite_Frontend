@@ -8,6 +8,7 @@ import RecoverPassword from './pages/customer/RecoverPassword/RecoverPassword'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import RoomsList from './pages/customer/RoomsList/RoomsList'
 import AdminDashboardBooking from './pages/admin/AdminDashboardBooking'
+import AdminOrder from './pages/admin/AdminOrder'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
 
       <Route path='/admin' element={<AdminDashboard />} />
       <Route path='/admin/booking' element={<AdminDashboardBooking />} />
+      <Route path='/admin/orders' element={<AdminOrder />} />
 
     </Routes>
   )
