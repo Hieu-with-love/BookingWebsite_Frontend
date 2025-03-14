@@ -6,6 +6,7 @@ import LoginPage from './pages/auth/LoginPage'
 import SignupPage from './pages/auth/SignupPage'
 import RecoverPassword from './pages/customer/RecoverPassword/RecoverPassword'
 import AdminDashboard from './pages/admin/AdminDashboard'
+import RoomsList from './pages/customer/RoomsList/RoomsList'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
       {/* Start all routes of Customer Role */}
       <Route path='/home' element={<Home />} />
+      <Route path='/rooms' element={<RoomsList />} />
 
       {/* End all routes of Customer Role */}
 
