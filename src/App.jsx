@@ -11,6 +11,7 @@ import AdminDashboardBooking from './pages/admin/AdminDashboardBooking'
 import AdminOrder from './pages/admin/AdminOrder'
 import AdminOrderDetail from './pages/admin/AdminOrderDetail'
 import AdminReviews from './pages/admin/AdminReviews'
+import AdminSetting from './pages/admin/AdminSetting'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
       <Route path='/admin/orders' element={<AdminOrder />} />
       <Route path='/admin/orders/:id' element={<AdminOrderDetail />} />
       <Route path='/admin/reviews' element={<AdminReviews />} />
+      <Route path='/admin/setting' element={<AdminSetting />} />
 
     </Routes>
   )
