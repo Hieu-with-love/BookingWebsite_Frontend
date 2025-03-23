@@ -1,5 +1,6 @@
 import React from 'react'
 import imgTeam9 from '../../assets/images/team9.jpg'
+import { Link } from 'react-router-dom'
 
 const Sidebar_Admin = () => {
     return (
@@ -16,7 +17,7 @@ const Sidebar_Admin = () => {
                             </div>
                             <div class="author-bio">
                                 <h4 class="author__title">Royel travel agency</h4>
-                                <span class="author__meta">Welcome to Admin Panel</span>
+                                <span class="author__meta">Welcome to Partner Panel</span>
                             </div>
                         </div>
                     </div>
@@ -28,49 +29,52 @@ const Sidebar_Admin = () => {
                                 >
                             </li>
                             <li>
-                                <a href="admin-dashboard-booking.html"
-                                ><i class="la la-shopping-cart me-2 text-color"></i>Booking</a
+                                
+                                <Link to={'/partner/booking'}
+                                ><i class="la la-shopping-cart me-2 text-color-3"></i>Booking</Link
                                 >
+                                
+                            </li>
+                            <li>
+                                <span class="side-menu-icon toggle-menu-icon">
+                                <i class="la la-angle-down"></i>
+                                </span>
+                                <Link to={'/partner/list-hotel'}
+                                ><i className="la la-list me-2 text-color-8"></i>Quản lý khách sạn</Link
+                                >
+                                
+                                <ul className='toggle-drop-menu'>
+                                    <li>
+                                        <Link to={'/partner/add-hotel'}
+                                        ><i className="la la-plus-circle me-2 text-color"></i> Add Hotel</Link
+                                        >
+                                    </li>
+                                </ul>
                             </li>
                             <li>
                                 <span class="side-menu-icon toggle-menu-icon">
                                     <i class="la la-angle-down"></i>
                                 </span>
                                 <a href="admin-dashboard-orders.html"
-                                ><i class="la la-list me-2 text-color-2"></i>Orders</a
+                                ><i class="la la-list me-2 text-color-2"></i>Quản lý phòng</a
                                 >
                                 <ul class="toggle-drop-menu">
                                     <li>
                                         <a href="admin-dashboard-orders-details.html"
-                                        >Order Details</a
+                                        ><i className="la la-plus-circle me-2 text-color-2"></i> Add Room</a
                                         >
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <span class="side-menu-icon toggle-menu-icon">
-                                    <i class="la la-angle-down"></i>
-                                </span>
-                                <a href="admin-dashboard-travellers.html"
-                                ><i class="la la-users me-2 text-color-3"></i>Travellers</a
-                                >
-                                <ul class="toggle-drop-menu">
-                                    <li>
-                                        <a href="admin-dashboard-traveler-detail.html"
-                                        >Traveller Details</a
-                                        >
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="admin-dashboard-visa.html"
-                                ><i class="la la-plane me-2 text-color-4"></i>Visa
-                                    Application</a
+                                <Link to={'/partner/add-room'}
+                                ><i class="la la-chart-bar me-2 text-color-4"></i>
+                                    Xem báo cáo doanh thu</Link
                                 >
                             </li>
                             <li>
                                 <a href="admin-dashboard-reviews.html"
-                                ><i class="la la-star me-2 text-color-5"></i>Reviews</a
+                                ><i class="la la-tags me-2 text-color-5"></i>Quản lý giảm giá</a
                                 >
                             </li>
                             <li>

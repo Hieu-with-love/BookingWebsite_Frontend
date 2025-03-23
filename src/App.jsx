@@ -5,15 +5,13 @@ import Home from './pages/customer/Home/Home'
 import LoginPage from './pages/auth/LoginPage'
 import SignupPage from './pages/auth/SignupPage'
 import RecoverPassword from './pages/customer/RecoverPassword/RecoverPassword'
-import AdminDashboard from './pages/admin/AdminDashboard'
 import RoomsList from './pages/customer/RoomsList/RoomsList'
-import AdminDashboardBooking from './pages/admin/AdminDashboardBooking'
-import AdminOrder from './pages/admin/AdminOrder'
-import AdminOrderDetail from './pages/admin/AdminOrderDetail'
-import AdminReviews from './pages/admin/AdminReviews'
-import AdminSetting from './pages/admin/AdminSetting'
-import AdminPayment from './pages/admin/AdminPayment'
-import AdminWishList from './pages/admin/AdminWishList'
+
+// Import all route to partner
+import PartnerDashboard from './pages/partner/PartnerDashboard'
+import AddRoom from './pages/partner/Manage-Rooms/AddRoom'
+import AddHotel from './pages/partner/Manage-Hotels/AddHotel'
+import ListHotel from './pages/partner/Manage-Hotels/ListHotel'
 
 function App() {
   return (
@@ -33,15 +31,11 @@ function App() {
 
       {/* End all routes of Customer Role */}
 
-      <Route path='/admin' element={<AdminDashboard />} />
-      <Route path='/admin/booking' element={<AdminDashboardBooking />} />
-      <Route path='/admin/orders' element={<AdminOrder />} />
-      <Route path='/admin/orders/:id' element={<AdminOrderDetail />} />
-      <Route path='/admin/reviews' element={<AdminReviews />} />
-      <Route path='/admin/setting' element={<AdminSetting />} />
-      <Route path='/admin/payments' element={<AdminPayment />} />
-      <Route path='/admin/wishlist' element={<AdminWishList />} />
-
+      <Route path='/partner' element={<PartnerDashboard />} />
+      <Route path='/partner/list-hotel' element={<ListHotel />} />
+      <Route path='/partner/add-hotel' element={<AddHotel />} />
+      <Route path='/partner/add-room' element={<AddRoom />} />
+ 
     </Routes>
   )
 }

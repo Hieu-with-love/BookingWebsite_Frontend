@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from '../../assets/images/logo.png'
-import paymentImg from '../../assets/images/payment-img.png'
+import logo from '../../../assets/images/logo.png'
+import paymentImg from '../../../assets/images/payment-img.png'
 
 const Footer = () => {
     return (
