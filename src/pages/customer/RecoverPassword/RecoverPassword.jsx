@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import LoadingPage from '../../../common/LoadingPage'
-import Header from '../../../components/Header/Header'
-import Footer from '../../../components/Footer/Footer'
+import Header from '../../../components/customer/Header/Header'
+import Footer from '../../../components/customer/Footer/Footer'
 
 const RecoverPassword = () => {
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import hotel1 from '../../assets/images/img1.jpg'
-import hotel2 from '../../assets/images/img2.jpg'
-import hotel3 from '../../assets/images/img3.jpg'
-import hotel4 from '../../assets/images/img4.jpg'
-import hotel5 from '../../assets/images/img5.jpg'
-import hotel6 from '../../assets/images/img6.jpg'
+import hotel1 from '../../../assets/images/img1.jpg'
+import hotel2 from '../../../assets/images/img2.jpg'
+import hotel3 from '../../../assets/images/img3.jpg'
+import hotel4 from '../../../assets/images/img4.jpg'
+import hotel5 from '../../../assets/images/img5.jpg'
+import hotel6 from '../../../assets/images/img6.jpg'
 
 const Popular = () => {
     return (

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import LoadingPage from '../../../common/LoadingPage'
-import Header from '../../../components/Header/Header'
+import Header from '../../../components/customer/Header/Header'
+
 import image5 from '../../../assets/images/img5.jpg'
 import image29 from '../../../assets/images/img29.jpg'
 import image30 from '../../../assets/images/img30.jpg'
 import image31 from '../../../assets/images/img31.jpg'
 import image32 from '../../../assets/images/img32.jpg'
 import image33 from '../../../assets/images/img33.jpg'
-import Footer from '../../../components/Footer/Footer'
+import Footer from '../../../components/customer/Footer/Footer'
 import RoomCard from './RoomCard'
 import { getRooms } from '../../../config/roomApi'
 

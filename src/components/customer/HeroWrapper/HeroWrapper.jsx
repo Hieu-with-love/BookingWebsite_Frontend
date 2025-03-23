@@ -1,9 +1,9 @@
 import React from 'react'
-import background from '../../assets/images/hero-bg.jpg'
-import background2 from '../../assets/images/hero--bg2.jpg'
-import background3 from '../../assets/images/hero--bg3.jpg'
+import background from '../../../assets/images/hero-bg.jpg'
+import background2 from '../../../assets/images/hero--bg2.jpg'
+import background3 from '../../../assets/images/hero--bg3.jpg'
 import './hero-wrapper.css'
-import { options } from '../../utils/data'
+import { options } from '../../../utils/data'
 const HeroWrapper = () => {
 
     return (

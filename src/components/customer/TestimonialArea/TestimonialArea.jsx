@@ -1,6 +1,6 @@
 import React from 'react'
-import customerImg1 from '../../assets/images/team8.jpg'
-import customerImg2 from '../../assets/images/team9.jpg'
+import customerImg1 from '../../../assets/images/team8.jpg'
+import customerImg2 from '../../../assets/images/team9.jpg'
 
 const TestimonialArea = () => {
     return (
