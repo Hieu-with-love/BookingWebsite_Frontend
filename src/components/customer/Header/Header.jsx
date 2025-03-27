@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../../assets/images/logo.png'
+import menAvatar from '../../../assets/images/avartar/profile.png'
 
-const Header = () => {
+const Header = ({user, onLogout}) => {
     const [isLogin, setIsLogin] = useState(false);
-
-
-
 
     return (
         <>
@@ -158,24 +156,43 @@ const Header = () => {
                                             </div>
                                         </div>
                                         {
-
+                                            user ? (
+                                                <div class="header-right-action">
+                                                    <div class="dropdown">
+                                                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <img src={user.avatar || menAvatar} 
+                                                                alt="Avatar" 
+                                                                class="rounded-circle" 
+                                                                style={{ width: "40px", height: "40px", objectFit: "cover" }} />
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                                            <li><a class="dropdown-item" href="/settings">Settings</a></li>
+                                                            <li><hr class="dropdown-divider" /></li>
+                                                            <li><a class="dropdown-item" href="#" onClick={onLogout}>Logout</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <div class="header-right-action">
+                                                    <a
+                                                        href="#"
+                                                        class="theme-btn theme-btn-small theme-btn-transparent me-1"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#signupPopupForm"
+                                                    >Sign Up</a
+                                                    >
+                                                    <a
+                                                        href="#"
+                                                        class="theme-btn theme-btn-small"
+                                                        data-bs-toggle="modal"
+                                                        data-bs-target="#loginPopupForm"
+                                                    >Login</a
+                                                    >
+                                                </div>
+                                            )
                                         }
-                                        <div class="header-right-action">
-                                            <a
-                                                href="#"
-                                                class="theme-btn theme-btn-small theme-btn-transparent me-1"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#signupPopupForm"
-                                            >Sign Up</a
-                                            >
-                                            <a
-                                                href="#"
-                                                class="theme-btn theme-btn-small"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#loginPopupForm"
-                                            >Login</a
-                                            >
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

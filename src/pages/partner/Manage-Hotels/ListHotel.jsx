@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Responsive_User from '../../../components/admin/Responsive_User'
 import Sidebar_Admin from '../../../components/Sidebar/Sidebar_Admin'
 import Navigation from '../../../components/admin/Navigation'
+import { getHotels } from '../../../config/hotelApi'
+import { Link } from 'react-router-dom'
 
 const ListHotel = () => {
+  const [hotels, setHotels] = useState([])
+
+  useEffect(() => {
+    const fetchHotels = async () => {
+      try{
+        const data = await getHotels();
+        if (Array.isArray(data)){
+          setHotels(data);
+          console.log("hotel", data)
+        }
+      }catch(error){
+        alert("Failed to fetch hotels")
+      }
+    };
+
+    fetchHotels();
+  }, [])
+
   return (
     <>
       <Responsive_User />
@@ -20,7 +40,7 @@ const ListHotel = () => {
                 <div class="breadcrumb-content">
                   <div class="section-heading">
                     <h2 class="sec__title font-size-30 text-white">
-                      Visa Application
+                      Quản lý khách sạn
                     </h2>
                   </div>
                 </div>
@@ -32,7 +52,7 @@ const ListHotel = () => {
                   <ul class="list-items">
                     <li><a href="index.html" class="text-white">Home</a></li>
                     <li>Dashboard</li>
-                    <li>Visa Application</li>
+                    <li>Quản lý khách sạn</li>
                   </ul>
                 </div>
                 {/* <!-- end breadcrumb-list --> */}
@@ -48,22 +68,29 @@ const ListHotel = () => {
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-box">
-                  <div class="form-title-wrap">
-                    <h3 class="title">Visa Application Lists</h3>
+                  <div class="form-title-wrap row">
+                    <div className='col-lg-8'>
+                    <h3 class="title">Danh sách khách sạn</h3>
                     <p class="font-size-14">Showing 1 to 8 of 20 entries</p>
+                    </div>
+                    <div className='col-lg-4 text-end'>
+                      <Link className='btn btn-primary'
+                        to={'/partner/add-hotel'}
+                      >Thêm khách sạn</Link>
+                    </div>
                   </div>
                   <div class="form-content">
                     <div class="table-form table-responsive">
                       <table class="table">
                         <thead>
                           <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Country</th>
-                            <th scope="col">Duration</th>
-                            <th scope="col">Application Date</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">TT</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Địa chỉ</th>
+                            <th scope="col">Ngày tạo</th>
+                            <th scope="col">Số lượng phòng</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Chức năng</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -104,87 +131,16 @@ const ListHotel = () => {
                               </div>
                             </td>
                           </tr>
-                          <tr>
-                            <th scope="row">2</th>
+
+                          { hotels.map((hotel, index) => (
+                            <tr key={hotel.id || index}>
+                            <th scope="row">{index + 1}</th>
                             <td>
                               <div class="table-content">
-                                <h3 class="title">Alex Smith</h3>
+                                <h3 class="title">{hotel.name}</h3>
                               </div>
                             </td>
-                            <td>Canada</td>
-                            <td>3 Days</td>
-                            <td>Apr 02 2020</td>
-                            <td>
-                              <span class="badge text-bg-success py-1 px-2"
-                                >Approved</span
-                              >
-                            </td>
-                            <td>
-                              <div class="table-content">
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small me-2"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="View"
-                                  ><i class="la la-eye"></i
-                                ></a>
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="Edit"
-                                  ><i class="la la-edit"></i
-                                ></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>
-                              <div class="table-content">
-                                <h3 class="title">Kamran Adi</h3>
-                              </div>
-                            </td>
-                            <td>New York</td>
-                            <td>12 Days</td>
-                            <td>Apr 02 2020</td>
-                            <td>
-                              <span
-                                class="badge text-bg-warning text-white py-1 px-2"
-                                >New</span
-                              >
-                            </td>
-                            <td>
-                              <div class="table-content">
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small me-2"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="View"
-                                  ><i class="la la-eye"></i
-                                ></a>
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="Edit"
-                                  ><i class="la la-edit"></i
-                                ></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">4</th>
-                            <td>
-                              <div class="table-content">
-                                <h3 class="title">Josh Purdila</h3>
-                              </div>
-                            </td>
-                            <td>Istanbul, Turkey</td>
+                            <td>{hotel.address.city}</td>
                             <td>7 Days</td>
                             <td>Apr 02 2020</td>
                             <td>
@@ -214,150 +170,9 @@ const ListHotel = () => {
                               </div>
                             </td>
                           </tr>
-                          <tr>
-                            <th scope="row">5</th>
-                            <td>
-                              <div class="table-content">
-                                <h3 class="title">Mark Hardson</h3>
-                              </div>
-                            </td>
-                            <td>Beijing, China</td>
-                            <td>7 Days</td>
-                            <td>Apr 02 2020</td>
-                            <td>
-                              <span class="badge text-bg-success py-1 px-2"
-                                >Approved</span
-                              >
-                            </td>
-                            <td>
-                              <div class="table-content">
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small me-2"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="View"
-                                  ><i class="la la-eye"></i
-                                ></a>
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="Edit"
-                                  ><i class="la la-edit"></i
-                                ></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">6</th>
-                            <td>
-                              <div class="table-content">
-                                <h3 class="title">David Martin</h3>
-                              </div>
-                            </td>
-                            <td>Dubai</td>
-                            <td>7 Days</td>
-                            <td>Apr 02 2020</td>
-                            <td>
-                              <span class="badge text-bg-success py-1 px-2"
-                                >Approved</span
-                              >
-                            </td>
-                            <td>
-                              <div class="table-content">
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small me-2"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="View"
-                                  ><i class="la la-eye"></i
-                                ></a>
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="Edit"
-                                  ><i class="la la-edit"></i
-                                ></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">7</th>
-                            <td>
-                              <div class="table-content">
-                                <h3 class="title">Kevin Powel</h3>
-                              </div>
-                            </td>
-                            <td>Nepal</td>
-                            <td>7 Days</td>
-                            <td>Apr 02 2020</td>
-                            <td>
-                              <span class="badge text-bg-success py-1 px-2"
-                                >Approved</span
-                              >
-                            </td>
-                            <td>
-                              <div class="table-content">
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small me-2"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="View"
-                                  ><i class="la la-eye"></i
-                                ></a>
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="Edit"
-                                  ><i class="la la-edit"></i
-                                ></a>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row">8</th>
-                            <td>
-                              <div class="table-content">
-                                <h3 class="title">Amir Hamja</h3>
-                              </div>
-                            </td>
-                            <td>Bangladesh</td>
-                            <td>7 Days</td>
-                            <td>Apr 02 2020</td>
-                            <td>
-                              <span class="badge text-bg-info py-1 px-2"
-                                >Pending</span
-                              >
-                            </td>
-                            <td>
-                              <div class="table-content">
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small me-2"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="View"
-                                  ><i class="la la-eye"></i
-                                ></a>
-                                <a
-                                  href="#"
-                                  class="theme-btn theme-btn-small"
-                                  data-bs-toggle="tooltip"
-                                  data-placement="top"
-                                  title="Edit"
-                                  ><i class="la la-edit"></i
-                                ></a>
-                              </div>
-                            </td>
-                          </tr>
+                          ))
+                          }
+                          
                         </tbody>
                       </table>
                     </div>
