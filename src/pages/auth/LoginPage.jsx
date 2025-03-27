@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { login } from '../../config/apiConfig';
 import { Link, useNavigate } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage = ({onLogin}) => {
 
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
-    const [isLogin, setIsLogin] = useState(false);
     const navigate = useNavigate();
+    const [isLogin, setIsLogin] = useState(false);
 
 
     const handleChangeForm = (e) => {
@@ -19,16 +19,20 @@ const LoginPage = () => {
         })
         console.log("formData: ", formData);
     }
+
     const handleSubmitForm = async (e) => {
         e.preventDefault();
         try {
             const response = await login(formData);
-            localStorage.setItem('jwt', response.data.jwt);
-            setIsLogin(true);
-
-            console.log("response: ", response);
+            if (response.jwt) {
+                localStorage.setItem('jwt', response.jwt);
+                onLogin(response.message, response.jwt);
+                navigate('/home');
+            } else {
+                console.error("Login failed: No JWT received");
+            }
         } catch (error) {
-            console.log("error: ", error);
+            console.error("Login error: ", error);
         }
     }
 

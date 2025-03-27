@@ -1,8 +1,8 @@
-import { api } from "./apiConfig"
+import { api } from "./apiConfig";
 
-export const getRooms = async () => {
+export const getHotels = async () => {
     try {
-        const response = await api.get("/customer/rooms");
+        const response = await api.get("/partner/hotels");
         return response.data;
     } catch (error) {
         return error.response ? error.response.data : error.message;
