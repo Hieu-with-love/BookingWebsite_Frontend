@@ -5,7 +5,7 @@ import imgTeam9 from '../../assets/images/team9.jpg'
 import imgTeam10 from '../../assets/images/team10.jpg'
 import imgTeam11 from '../../assets/images/team11.jpg'
 import logo2 from '../../assets/images/logo2.png'
-import Sidebar_Admin from '../../components/Sidebar/Sidebar_Admin'
+
 
 const AdminPayment = () => {
     return (

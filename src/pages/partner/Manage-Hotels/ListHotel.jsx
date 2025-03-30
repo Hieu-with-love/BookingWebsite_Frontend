@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Responsive_User from '../../../components/admin/Responsive_User'
-import Sidebar_Admin from '../../../components/Sidebar/Sidebar_Admin'
-import Navigation from '../../../components/admin/Navigation'
+import Responsive_User from '../../../components/partner/Responsive_User'
+import Navigation from '../../../components/partner/Navigation'
 import { getHotels } from '../../../config/hotelApi'
 import { Link } from 'react-router-dom'
+import Sidebar_Partner from '../../../components/partner/Sidebar_Partner'
 
 const ListHotel = () => {
   const [hotels, setHotels] = useState([])
@@ -27,7 +27,7 @@ const ListHotel = () => {
   return (
     <>
       <Responsive_User />
-      <Sidebar_Admin />
+      <Sidebar_Partner />
 
       <section className='dashboard-area'>
         <Navigation />

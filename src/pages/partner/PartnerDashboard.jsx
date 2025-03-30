@@ -1,16 +1,16 @@
 import React from 'react'
 
-import Sidebar_Admin from '../../components/Sidebar/Sidebar_Admin'
-import Navigation from '../../components/admin/Navigation'
-import Footer from '../../components/admin/Footer'
-import Responsive_User from '../../components/admin/Responsive_User'
+import Navigation from '../../components/partner/Navigation'
+import Footer from '../../components/partner/Footer'
+import Responsive_User from '../../components/partner/Responsive_User'
+import Sidebar_Partner from '../../components/partner/Sidebar_Partner'
 
 const PartnerDashboard = () => {
     return (
         <div>
             <Responsive_User />
 
-            <Sidebar_Admin />
+            <Sidebar_Partner />
 
             <section class="dashboard-area">
                 

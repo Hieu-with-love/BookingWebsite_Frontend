@@ -1,8 +1,7 @@
 import React from 'react'
 import LoadingPage from '../../../common/LoadingPage'
-import Responsive_User from '../../../components/admin/Responsive_User'
-import Navigation from '../../../components/admin/Navigation'
-import Sidebar_Admin from '../../../components/Sidebar/Sidebar_Admin'
+import Responsive_User from '../../../components/partner/Responsive_User'
+import Sidebar_Partner from '../../../components/partner/Sidebar_Partner'
 
 const AddHotel = () => {
   return (
@@ -11,7 +10,7 @@ const AddHotel = () => {
 
         <Responsive_User />
 
-        <Sidebar_Admin />
+        <Sidebar_Partner />
 
         <section class="dashboard-area">
 
