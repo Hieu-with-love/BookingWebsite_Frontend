@@ -26,3 +26,12 @@ export const login = async (userData) => {
         return error.response ? error.response.data : error.message;
     }
 }
+
+export const verifyAccount = async (token) => {
+    try {
+        const response = await api.get(`/auth/verify-account?token=${token}`);
+        return response.data;
+    } catch (error) {
+        return error.response ? error.response.data : error.message;
+    }
+}
