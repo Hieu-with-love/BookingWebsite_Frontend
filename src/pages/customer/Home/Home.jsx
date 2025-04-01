@@ -8,7 +8,8 @@ import CtaArea from '../../../components/customer/CTAArea/CtaArea'
 import Footer from '../../../components/customer/Footer/Footer'
 import SignupPage from '../../auth/SignupPage'
 import LoginPage from '../../auth/LoginPage'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { verifyAccount } from '../../../config/apiConfig'
 
 import img5 from '../../../assets/images/img5.jpg'
 import img6 from '../../../assets/images/img6.jpg'
@@ -21,6 +22,8 @@ const Home = () => {
     const [user, setUser] = useState(null);
     const [jwt, setJwt] = useState(localStorage.getItem('jwt'));
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const [verificationStatus, setVerificationStatus] = useState(null);
 
     useEffect(() => {
         // Check for existing JWT on component mount
@@ -32,11 +35,64 @@ const Home = () => {
             setUser(JSON.parse(storedUser));
         }
 
+        // Check for verification token in URL
+        const token = searchParams.get('token');
+        const error = searchParams.get('error');
+        
+        if (error === 'verification_failed') {
+            setVerificationStatus('error');
+            // Clean up URL
+            navigate('/home', { replace: true });
+            return;
+        }
+
+        if (token) {
+            handleVerification(token);
+        }
+
         // Preloader
         $(window).on("load", function () {
             $("#my-preloader").fadeOut(1000);
         });
-    }, []);
+    }, [searchParams, navigate]);
+
+    const handleVerification = async (token) => {
+        try {
+            const response = await verifyAccount(token);
+            if (response.status && response.jwt) {
+                // Create a default user object
+                const defaultUser = {
+                    email: response.email || 'Verified User',
+                    avatar: 'https://ui-avatars.com/api/?name=Verified+User&background=random'
+                };
+                
+                // Save the JWT and user data
+                localStorage.setItem('jwt', response.jwt);
+                localStorage.setItem('user', JSON.stringify(defaultUser));
+                
+                // Update state
+                setJwt(response.jwt);
+                setUser(defaultUser);
+                setVerificationStatus('success');
+                
+                // Clean up URL
+                navigate('/home', { replace: true });
+                
+                // Open login modal after a short delay
+                setTimeout(() => {
+                    const loginModal = new bootstrap.Modal(document.getElementById('loginPopupForm'));
+                    if (loginModal) {
+                        loginModal.show();
+                    }
+                }, 1000);
+            }
+        } catch (error) {
+            console.error("Verification error:", error);
+            setVerificationStatus('error');
+            // Clean up URL
+            navigate('/home', { replace: true });
+        }
+    };
 
     const handleLogin = (userData, token) => {
         setUser(userData);
@@ -70,6 +126,21 @@ const Home = () => {
                     </svg>
                 </div>
             </div>
+
+            {/* Verification Status Messages */}
+            {verificationStatus === 'success' && (
+                <div className="alert alert-success alert-dismissible fade show" role="alert">
+                    Account verified successfully! Please log in.
+                    <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            )}
+            {verificationStatus === 'error' && (
+                <div className="alert alert-danger alert-dismissible fade show" role="alert">
+                    Account verification failed. Please try again or contact support.
+                    <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            )}
+
             <Header 
                 user={user} 
                 onLogout={handleLogout}

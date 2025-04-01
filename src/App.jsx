@@ -70,7 +70,7 @@ function App() {
       <Route path='/partner/add-room' element={<AddRoom />} />
       <Route path='/partner/list-discount' element={<ListDiscount />} />
       <Route path='/partner/create-discount' element={<CreateDiscount />} />
-      <Route path='/partner/edit-discount/:id' element={<EditDiscount />} />
+      <Route path='/partner/update-discount/:id' element={<EditDiscount />} />
       {/* End all routes of Partner Role */}
     </Routes>
   )

@@ -32,7 +32,7 @@ export const createDiscount = async (discountData) => {
 
 export const updateDiscount = async (discountId, discountData) => {
     try{
-        const response = await api.put(`/partner/vouchers/${discountId}`, discountData)
+        const response = await api.put(`/partner/vouchers/update/${discountId}`, discountData)
         return response.data
     } catch (error) {
         console.error('Error updating discount:', error)

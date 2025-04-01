@@ -6,6 +6,12 @@ const Sidebar_Partner = () => {
     const location = useLocation();
 
     const isActive = (path) => {
+        // For discount management, check if path starts with /partner/list-discount
+        if (path === '/partner/list-discount') {
+            return location.pathname.startsWith('/partner/list-discount') || 
+                   location.pathname.startsWith('/partner/create-discount') || 
+                   location.pathname.startsWith('/partner/update-discount') ? 'page-active' : '';
+        }
         return location.pathname === path ? 'page-active' : '';
     };
 

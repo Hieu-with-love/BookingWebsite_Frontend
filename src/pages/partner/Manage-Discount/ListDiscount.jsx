@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import Responsive_User from '../../../components/partner/Responsive_User'
 import Sidebar_Partner from '../../../components/partner/Sidebar_Partner'
 import Navigation from '../../../components/partner/Navigation'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import Footer from '../../../components/partner/Footer'
 import { getDiscounts, deleteDiscount, getDiscountById } from '../../../config/discountApi'
 
 const ListDiscount = () => {
+  const location = useLocation();
+
   const [discounts, setDiscounts] = useState([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [discountToDelete, setDiscountToDelete] = useState(null);
@@ -23,6 +25,12 @@ const ListDiscount = () => {
     
     fetchDiscounts();
   }, [])
+
+  const isActive = (path) => {
+    // Check if current path starts with the given path
+    // This will keep the menu item active for both list and create/edit pages
+    return location.pathname.startsWith(path) ? 'page-active' : '';
+  }
 
   const handleDeleteClick = (discount) => {
     setDiscountToDelete(discount);
@@ -111,7 +119,7 @@ const ListDiscount = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            { discounts ? discounts.map((discount, index) => (
+                            { discounts && discounts.length > 0 ? discounts.map((discount, index) => (
                               <tr key={discount.id}>
                                 <th scope="row">{index + 1}</th>
                                 <td>
@@ -124,14 +132,22 @@ const ListDiscount = () => {
                                 <td>{discount.quantity}</td>
                                 <td>{discount.expirationDate}</td>
                                 <td>
+                                  {
+                                    discount.active ? 
+                                    <span
+                                    className="badge text-bg-success text-white py-1 px-2"
+                                  >Còn hạn</span>
+                                  :
                                   <span
-                                    className="badge text-bg-warning text-white py-1 px-2"
-                                  >{discount.isActive ? 'Còn hạn' : 'Hết hạn'}</span>
+                                    className="badge text-bg-danger text-white py-1 px-2"
+                                  >Hết hạn</span>
+                                  }
+                                  
                                 </td>
                                 <td>
                                   <div className="table-content">
                                     <Link
-                                      to={`/partner/edit-discount/${discount.id}`}
+                                      to={`/partner/update-discount/${discount.id}`}
                                       className="theme-btn theme-btn-small me-2"
                                       data-bs-toggle="tooltip"
                                       data-placement="top"
@@ -149,7 +165,13 @@ const ListDiscount = () => {
                               </tr>
                             )) : (
                               <tr>
-                                <td colSpan="8" className='text-center'>Không có dữ liệu</td>
+                                <td colSpan="8">
+                                  <div className="text-center py-5">
+                                    <i className="la la-ticket-alt" style={{ fontSize: '48px', color: '#ccc', marginBottom: '15px' }}></i>
+                                    <p className="text-muted mb-0">Chưa có mã giảm giá nào</p>
+                                    <p className="text-muted small">Bạn có thể tạo mã giảm giá mới bằng cách nhấn nút "Thêm mã giảm giá" ở trên</p>
+                                  </div>
+                                </td>
                               </tr>
                             )}
                           </tbody>
