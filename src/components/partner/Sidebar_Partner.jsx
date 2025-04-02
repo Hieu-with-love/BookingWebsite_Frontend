@@ -28,7 +28,7 @@ const Sidebar_Partner = () => {
                                 <img src={imgTeam9} alt="testimonial image" />
                             </div>
                             <div className="author-bio">
-                                <h4 className="author__title">Royel travel agency</h4>
+                                <h4 className="author__title">Trần Trung Hiếu</h4>
                                 <span className="author__meta">Welcome to Partner Panel</span>
                             </div>
                         </div>
@@ -85,55 +85,8 @@ const Sidebar_Partner = () => {
                                 <Link to="/partner/list-discount">
                                     <i className="la la-tags me-2 text-color-5"></i>Quản lý giảm giá
                                 </Link>
-                            </li>
-                            <li className={isActive('/partner/wishlist')}>
-                                <Link to="/partner/wishlist">
-                                    <i className="la la-heart me-2 text-color-6"></i>Wishlist
-                                </Link>
-                            </li>
-                            <li className={isActive('/partner/travel-agents')}>
-                                <Link to="/partner/travel-agents">
-                                    <i className="la la-text-width me-2 text-color-7"></i>Travel Agents
-                                </Link>
-                            </li>
-                            <li className={isActive('/partner/finance')}>
-                                <span className="side-menu-icon toggle-menu-icon">
-                                    <i className="la la-angle-down"></i>
-                                </span>
-                                <Link to="/partner/finance">
-                                    <i className="la la-area-chart me-2 text-color-8"></i>Finance
-                                </Link>
-                                <ul className="toggle-drop-menu">
-                                    <li className={isActive('/partner/invoice')}>
-                                        <Link to="/partner/invoice">Invoice</Link>
-                                    </li>
-                                    <li className={isActive('/partner/payments')}>
-                                        <Link to="/partner/payments">Payments</Link>
-                                    </li>
-                                    <li className={isActive('/partner/currency-list')}>
-                                        <Link to="/partner/currency-list">Currency List</Link>
-                                    </li>
-                                    <li className={isActive('/partner/subscribers')}>
-                                        <Link to="/partner/subscribers">Subscribers</Link>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li className={isActive('/partner/locations')}>
-                                <span className="side-menu-icon toggle-menu-icon">
-                                    <i className="la la-angle-down"></i>
-                                </span>
-                                <Link to="/partner/locations">
-                                    <i className="la la-map-signs me-2 text-color-9"></i>Locations
-                                </Link>
-                                <ul className="toggle-drop-menu">
-                                    <li className={isActive('/partner/countries')}>
-                                        <Link to="/partner/countries">Countries</Link>
-                                    </li>
-                                    <li className={isActive('/partner/airlines')}>
-                                        <Link to="/partner/airlines">Airlines</Link>
-                                    </li>
-                                </ul>
-                            </li>
+                            </li>                            
+                            
                             <li className={isActive('/partner/settings')}>
                                 <Link to="/partner/settings">
                                     <i className="la la-cog me-2 text-color-10"></i>Settings

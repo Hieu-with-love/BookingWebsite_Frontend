@@ -1,8 +1,8 @@
 import {api} from './apiConfig'
 
-export const getDiscounts = async () => {
+export const getDiscounts = async (page, size) => {
     try{
-        const response = await api.get('/partner/vouchers')
+        const response = await api.get(`/partner/vouchers?page=${page}&size=${size}`);
         return response.data
     } catch (error) {
         console.error('Error fetching discounts:', error)
