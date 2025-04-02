@@ -12,19 +12,28 @@ const ListDiscount = () => {
   const [discounts, setDiscounts] = useState([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [discountToDelete, setDiscountToDelete] = useState(null);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [totalElements, setTotalElements] = useState(0);
+  const [numberOfElements, setNumberOfElements] = useState(0);
 
   useEffect(() => {
     const fetchDiscounts = async () => {
-      try{
-        const response = await getDiscounts()
-        setDiscounts(response)
+      try {
+        const response = await getDiscounts(currentPage, 10);
+        setDiscounts(response.content);
+        setTotalPages(response.totalPages);
+        setNumberOfElements(response.numberOfElements);
+        setTotalElements(response.totalElements);
+        setCurrentPage(response.page);
+        console.log(response);
       } catch (error) {
         console.error('Error fetching discounts:', error)
       }
     }
     
     fetchDiscounts();
-  }, [])
+  }, [currentPage])
 
   const isActive = (path) => {
     // Check if current path starts with the given path
@@ -41,8 +50,12 @@ const ListDiscount = () => {
     try {
       await deleteDiscount(discountToDelete.id);
       // Refresh the list after deletion
-      const response = await getDiscounts();
-      setDiscounts(response);
+      const response = await getDiscounts(currentPage, 10);
+      setDiscounts(response.content);
+      setTotalPages(response.totalPages);
+      setNumberOfElements(response.numberOfElements);
+      setTotalElements(response.totalElements);
+      setCurrentPage(response.page);
       setShowDeleteModal(false);
       setDiscountToDelete(null);
     } catch (error) {
@@ -94,8 +107,10 @@ const ListDiscount = () => {
                   <div className="form-box">
                     <div className="form-title-wrap row">
                       <div className='col-lg-8'>
-                        <h3 className="title">Danh sách khách sạn</h3>
-                        <p className="font-size-14">Showing 1 to 8 of 20 entries</p>
+                        <h3 className="title">Danh sách mã giảm giá</h3>
+                        <p className="font-size-14">
+                          Showing 1 to {Math.min(numberOfElements, totalElements)} of {totalElements} entries
+                        </p>
                       </div>
                       <div className='col-lg-4 text-end'>
                         <Link className='btn btn-primary'
@@ -111,7 +126,7 @@ const ListDiscount = () => {
                               <th scope="col">TT</th>
                               <th scope="col">Mã giảm giá</th>
                               <th scope="col">Giá giảm</th>
-                              <th scope="col">Phần trăm giảm</th>
+                              <th scope="col">% giảm</th>
                               <th scope="col">Số lượng</th>
                               <th scope="col">Hạn sử dụng</th>
                               <th scope="col">Trạng thái</th>
@@ -133,16 +148,25 @@ const ListDiscount = () => {
                                 <td>{discount.expirationDate}</td>
                                 <td>
                                   {
-                                    discount.active ? 
-                                    <span
-                                    className="badge text-bg-success text-white py-1 px-2"
-                                  >Còn hạn</span>
-                                  :
-                                  <span
-                                    className="badge text-bg-danger text-white py-1 px-2"
-                                  >Hết hạn</span>
+                                    new Date(discount.expirationDate) > new Date() ? 
+                                    <div className="d-flex align-items-center">
+                                      <span className="badge text-bg-success text-white py-1 px-2 me-2">
+                                        <i className="la la-check-circle"></i> Còn hạn
+                                      </span>
+                                      <small className="text-muted">
+                                        Còn {Math.ceil((new Date(discount.expirationDate) - new Date()) / (1000 * 60 * 60 * 24))} ngày
+                                      </small>
+                                    </div>
+                                    :
+                                    <div className="d-flex align-items-center">
+                                      <span className="badge text-bg-danger text-white py-1 px-2 me-2">
+                                        <i className="la la-times-circle"></i> Hết hạn
+                                      </span>
+                                      <small className="text-muted">
+                                        Đã hết hạn {Math.ceil((new Date() - new Date(discount.expirationDate)) / (1000 * 60 * 60 * 24))} ngày
+                                      </small>
+                                    </div>
                                   }
-                                  
                                 </td>
                                 <td>
                                   <div className="table-content">
@@ -183,36 +207,85 @@ const ListDiscount = () => {
               </div>
               <div className="row">
                 <div className="col-lg-12">
-                  <nav aria-label="Page navigation example">
-                    <ul className="pagination">
-                      <li className="page-item">
-                        <a
-                          className="page-link page-link-nav"
-                          href="#"
-                          aria-label="Previous"
+                  <nav aria-label="Page navigation">
+                    <ul className="pagination justify-content-center">
+                      <li className={`page-item ${currentPage === 0 ? 'disabled' : ''}`}>
+                        <button
+                          className="page-link"
+                          onClick={() => setCurrentPage(prev => Math.max(0, prev - 1))}
+                          disabled={currentPage === 0}
                         >
-                          <span aria-hidden="true"><i className="la la-angle-left"></i></span>
-                          <span className="sr-only">Previous</span>
-                        </a>
+                          <i className="la la-angle-left"></i>
+                        </button>
                       </li>
-                      <li className="page-item">
-                        <a className="page-link page-link-nav" href="#">1</a>
-                      </li>
-                      <li className="page-item active">
-                        <a className="page-link page-link-nav" href="#">2 <span className="sr-only">(current)</span></a>
-                      </li>
-                      <li className="page-item">
-                        <a className="page-link page-link-nav" href="#">3</a>
-                      </li>
-                      <li className="page-item">
-                        <a
-                          className="page-link page-link-nav"
-                          href="#"
-                          aria-label="Next"
+                      
+                      {/* First page */}
+                      {currentPage > 2 && (
+                        <>
+                          <li className="page-item">
+                            <button
+                              className="page-link"
+                              onClick={() => setCurrentPage(0)}
+                            >
+                              1
+                            </button>
+                          </li>
+                          {currentPage > 3 && (
+                            <li className="page-item disabled">
+                              <span className="page-link">...</span>
+                            </li>
+                          )}
+                        </>
+                      )}
+
+                      {/* Current page and surrounding pages */}
+                      {[...Array(totalPages)].map((_, index) => {
+                        if (
+                          index === 0 || // First page
+                          index === totalPages - 1 || // Last page
+                          (index >= currentPage - 1 && index <= currentPage + 1) // Pages around current
+                        ) {
+                          return (
+                            <li key={index} className={`page-item ${currentPage === index ? 'active' : ''}`}>
+                              <button
+                                className="page-link"
+                                onClick={() => setCurrentPage(index)}
+                              >
+                                {index + 1}
+                              </button>
+                            </li>
+                          );
+                        }
+                        return null;
+                      })}
+
+                      {/* Last page */}
+                      {currentPage < totalPages - 3 && (
+                        <>
+                          {currentPage < totalPages - 4 && (
+                            <li className="page-item disabled">
+                              <span className="page-link">...</span>
+                            </li>
+                          )}
+                          <li className="page-item">
+                            <button
+                              className="page-link"
+                              onClick={() => setCurrentPage(totalPages - 1)}
+                            >
+                              {totalPages}
+                            </button>
+                          </li>
+                        </>
+                      )}
+
+                      <li className={`page-item ${currentPage === totalPages - 1 ? 'disabled' : ''}`}>
+                        <button
+                          className="page-link"
+                          onClick={() => setCurrentPage(prev => Math.min(totalPages - 1, prev + 1))}
+                          disabled={currentPage === totalPages - 1}
                         >
-                          <span aria-hidden="true"><i className="la la-angle-right"></i></span>
-                          <span className="sr-only">Next</span>
-                        </a>
+                          <i className="la la-angle-right"></i>
+                        </button>
                       </li>
                     </ul>
                   </nav>
