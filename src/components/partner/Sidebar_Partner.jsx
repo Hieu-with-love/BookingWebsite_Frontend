@@ -12,6 +12,12 @@ const Sidebar_Partner = () => {
                    location.pathname.startsWith('/partner/create-discount') || 
                    location.pathname.startsWith('/partner/update-discount') ? 'page-active' : '';
         }
+        if (path === '/partner/list-hotel'){
+            return location.pathname.startsWith('/partner/list-hotel') ||
+                     location.pathname.startsWith('/partner/create-hotel') || 
+                     location.pathname.startsWith('/partner/update-hotel') ? 'page-active' : '';
+        }
+
         return location.pathname === path ? 'page-active' : '';
     };
 
@@ -45,7 +51,7 @@ const Sidebar_Partner = () => {
                                     <i className="la la-shopping-cart me-2 text-color-3"></i>Booking
                                 </Link>
                             </li>
-                            <li className={isActive('/partner/list-hotel') || isActive('/partner/add-hotel')}>
+                            <li className={isActive('/partner/list-hotel') || isActive('/partner/create-hotel')}>
                                 <span className="side-menu-icon toggle-menu-icon">
                                     <i className="la la-angle-down"></i>
                                 </span>

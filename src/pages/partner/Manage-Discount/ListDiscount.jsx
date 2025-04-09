@@ -109,7 +109,7 @@ const ListDiscount = () => {
                       <div className='col-lg-8'>
                         <h3 className="title">Danh sách mã giảm giá</h3>
                         <p className="font-size-14">
-                          Showing 1 to {Math.min(numberOfElements, totalElements)} of {totalElements} entries
+                          Showing 1 to {Math.min(numberOfElements, 10)} of {totalElements} entries
                         </p>
                       </div>
                       <div className='col-lg-4 text-end'>
