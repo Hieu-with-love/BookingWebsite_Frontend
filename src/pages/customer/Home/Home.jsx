@@ -17,6 +17,7 @@ import img7 from '../../../assets/images/img7.jpg'
 import smallTeam1 from '../../../assets/images/small-team1.jpg'
 import smallTeam2 from '../../../assets/images/small-team2.jpg'
 import smallTeam3 from '../../../assets/images/small-team3.jpg'
+import HotelList from './HotelList'
 
 const Home = () => {
     const [user, setUser] = useState(null);
@@ -147,9 +148,9 @@ const Home = () => {
             />
             <HeroWrapper />
             <InfoArea />
-            <Popular />
+            {/* <Popular /> */}
 
-            <h1>Load all hotels/rooms at here</h1>
+            <HotelList />
 
             <TestimonialArea />
             <div className="section-block"></div>

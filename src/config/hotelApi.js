@@ -75,3 +75,34 @@ export const deleteHotel = async (hotelId) => {
         return error.response ? error.response.data : error.message;
     }
 }
+
+//
+export const getHotelsFromCustomer = async (page, size) => {
+    try {
+        const response = await api.get(`/customer/hotels?page=${page}&size=${size}`);
+        return response.data;
+    } catch (error) {
+        console.error('Error fetching hotels:', error);
+        throw error;
+    }
+}
+
+// Get popular hotels in the customer side
+export const getPopularHotels = async () => {
+    try{
+        const response = await api.get('/customer/hotels/popular');
+        return response.data;
+    }catch (error) {
+        return error.response ? error.response.data : error.message;
+    }
+}
+
+// Get hotel details from the customer side
+export const getHotelDetails = async (hotelId) => {
+    try{
+        const reponse = await api.get(`/customer/hotels/${hotelId}`);
+        return reponse.data;   
+    }catch (error) {
+        return error.response ? error.response.data : error.message;
+    }
+}

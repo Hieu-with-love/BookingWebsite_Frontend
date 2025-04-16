@@ -9,6 +9,9 @@ export const api = axios.create({
     }
 })
 
+// API configuration 
+export const API_BASE_URL = 'http://localhost:8088'; // Adjust this to your Spring Boot server URL
+
 export const register = async (userData) => {
     try {
         const response = await api.post("/auth/signup", userData);

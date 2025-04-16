@@ -18,6 +18,12 @@ const Sidebar_Partner = () => {
                      location.pathname.startsWith('/partner/update-hotel') ? 'page-active' : '';
         }
 
+        if (path === '/partner/list-room'){
+            return location.pathname.startsWith('/partner/list-room') ||
+                     location.pathname.startsWith('/partner/create-room') || 
+                     location.pathname.startsWith('/partner/update-room') ? 'page-active' : '';
+        }
+
         return location.pathname === path ? 'page-active' : '';
     };
 
