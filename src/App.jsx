@@ -22,6 +22,8 @@ import FilterdHotelList from './pages/customer/Home/FilterdHotelList'
 import DetailsHotel from './pages/customer/Home/DetailsHotel'
 import DetailsRoom from './pages/customer/RoomsList/DetailsRoom'
 import FilteredRoomList from './pages/customer/RoomsList/FilteredRoomList'
+import BookingDetail from './pages/customer/Home/BookingDetail'
+import BookingConfirmation from './pages/customer/Home/BookingConfirmation'
 
 
 function App() {
@@ -98,7 +100,8 @@ function App() {
       <Route path='/list-room' element={<FilteredRoomList />} />
       <Route path='/list-hotel/hotel/:id' element={<DetailsHotel />} />
       <Route path='/list-room/room/:id' element={<DetailsRoom />} />
-      
+      <Route path="/booking-detail" element={<BookingDetail />} />
+      <Route path='/booking-confirmation' element={<BookingConfirmation />} />
       {/* End route for customer */}
     </Routes>
   )

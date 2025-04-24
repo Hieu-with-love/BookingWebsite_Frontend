@@ -106,3 +106,23 @@ export const getHotelDetails = async (hotelId) => {
         return error.response ? error.response.data : error.message;
     }
 }
+
+// Get hotel details from the customer side
+export const getHotelDetailsById = async (hotelId) => {
+    try{
+        const response = await api.get(`/customer/hotels/${hotelId}`);
+        return response.data;
+    }catch (error) {
+        return error.response ? error.response.data : error.message;
+    }
+}
+
+// api form search hotel by some criteria
+export const searchRoomsByCriteria = async (criteria) => {
+    try{
+        const response = await api.get('/customer/hotels/search-rooms', criteria);
+        return response.data;
+    }catch (error) {
+        return error.response ? error.response.data : error.message;
+    }
+}

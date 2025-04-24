@@ -18,3 +18,11 @@ export const getRoomById = async (roomId) => {
     }
 }
 
+export const getRoomDetails = async (roomId) => {
+    try{
+        const response = await api.get(`/customer/rooms/${roomId}`);
+        return response.data;
+    }catch(error) {
+        return error.response ? error.response.data : error.message;
+    }
+}
