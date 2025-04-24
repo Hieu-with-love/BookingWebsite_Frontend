@@ -11,10 +11,11 @@ const HotelList = () => {
     const [pageSize, setPageSize] = useState(10);
     const [totalPages, setTotalPages] = useState(0);
     const [totalElements, setTotalElements] = useState(0);
+    const [numberOfElements, setNumberOfElements] = useState(0);
 
     useEffect(() => {
         fetchHotels(currentPage);
-    }, [currentPage, pageSize])
+    }, [currentPage])
 
     const fetchHotels = async (page) => {
         try {
@@ -23,6 +24,7 @@ const HotelList = () => {
             setHotels(response.content);
             setTotalPages(response.totalPages);
             setTotalElements(response.totalElements);
+            setNumberOfElements(response.numberOfElements);
             setLoading(false);
             console.log(response);
             console.log(response.content[0].images[0]);
@@ -30,12 +32,6 @@ const HotelList = () => {
             setError(error.message || 'Failed to fetch hotels');
             setLoading(false);
             alert('Error fetching hotels:', error);
-        }
-    };
-
-    const handlePageChange = (page) => {
-        if (page >= 1 && page <= totalPages) {
-            setCurrentPage(page);
         }
     };
 
@@ -56,6 +52,12 @@ const HotelList = () => {
         return `${API_BASE_URL}/images/${imagePath}`;
     };
 
+    const handlePageChange = (pageIndex) => {
+        if (pageIndex >= 0 && pageIndex < totalPages - 1){
+            setCurrentPage(pageIndex);
+        }
+    }
+
     const renderPageNumbers = () => {
         const pageNumbers = [];
         const maxPagesToShow = 5;
@@ -71,7 +73,7 @@ const HotelList = () => {
         for (let i = startPage; i <= endPage; i++) {
             pageNumbers.push(
                 <li key={i} className={`page-item ${currentPage === i ? 'active' : ''}`}>
-                    <button className="page-link" onClick={() => handlePageChange(i)}>{i}</button>
+                    <button className="page-link" onClick={handlePageChange(i)}>{i}</button>
                 </li>
             );
         }
@@ -154,11 +156,11 @@ const HotelList = () => {
             <div className="btn-box mt-3 text-center">
                 <nav aria-label="Page navigation">
                     <ul className="pagination justify-content-center">
-                        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                        <li className={`page-item ${currentPage === 0 ? 'disabled' : ''}`}>
                             <button 
                                 className="page-link" 
                                 onClick={() => handlePageChange(currentPage - 1)}
-                                disabled={currentPage === 1}
+                                disabled={currentPage === 0}
                             >
                                 <i className="la la-angle-left"></i> Previous
                             </button>
@@ -166,11 +168,11 @@ const HotelList = () => {
                         
                         {renderPageNumbers()}
                         
-                        <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                        <li className={`page-item ${currentPage === totalPages - 1 ? 'disabled' : ''}`}>
                             <button 
                                 className="page-link" 
                                 onClick={() => handlePageChange(currentPage + 1)}
-                                disabled={currentPage === totalPages}
+                                disabled={currentPage === totalPages - 1}
                             >
                                 Next <i className="la la-angle-right"></i>
                             </button>
@@ -178,7 +180,7 @@ const HotelList = () => {
                     </ul>
                 </nav>
                 <p className="font-size-13 pt-2">
-                    Showing {((currentPage - 1) * pageSize) + 1} - {Math.min(currentPage * pageSize, totalElements)} of {totalElements} Hotels
+                    Showing {(currentPage * pageSize) + 1} - {numberOfElements * (currentPage+1)} of {totalElements} Hotels
                 </p>
             </div>
         </div>
