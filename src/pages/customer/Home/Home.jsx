@@ -51,10 +51,6 @@ const Home = () => {
             handleVerification(token);
         }
 
-        // Preloader
-        $(window).on("load", function () {
-            $("#my-preloader").fadeOut(1000);
-        });
     }, [searchParams, navigate]);
 
     const handleVerification = async (token) => {
@@ -113,21 +109,6 @@ const Home = () => {
 
     return (
         <>
-            <div className="preloader" id="my-preloader">
-                <div className="loader">
-                    <svg className="spinner" viewBox="0 0 50 50">
-                        <circle
-                            className="path"
-                            cx="25"
-                            cy="25"
-                            r="20"
-                            fill="none"
-                            strokeWidth="5"
-                        ></circle>
-                    </svg>
-                </div>
-            </div>
-
             {/* Verification Status Messages */}
             {verificationStatus === 'success' && (
                 <div className="alert alert-success alert-dismissible fade show" role="alert">
